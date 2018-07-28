@@ -1,0 +1,34 @@
+{
+  "name": "actagain",
+  "version": "1.0.0",
+  "description": "Babby's first react project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trev155/ActAgain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trev155/ActAgain/issues"
+  },
+  "homepage": "https://github.com/trev155/ActAgain#readme",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
