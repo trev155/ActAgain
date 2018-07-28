@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Header } from './Header';
+import { WeatherForm } from './WeatherForm';
+
 
 export class App extends React.Component {
 	render() {
-		return <h1>HELLO WORLD</h1>;
+		return (
+		    <div>
+		        <Header/>
+		        <WeatherForm/>
+		    </div>
+		);
 	}
 }
-
