@@ -64,17 +64,17 @@ export class WeatherApp extends React.Component {
     render() {
         // When the page first loads, this.state.location_weather_data == null, so we have no data to display yet
         if (this.state.location_weather_data == null) {
-            console.log("First pass");
+            console.log("Rendered App (No weather data stored yet)");
             return (
                 <div>
-                    <WeatherForm weatherDataHandler={this.handleRequestWeatherData}/>
+                    <WeatherForm weatherDataHandler={this.handleRequestWeatherData} locationHandler={this.handleLocationChange}/>
                 </div>
             );
         } else {
-            console.log("Rerendered app");
+            console.log("Rendered App (with weather data)");
             return (
                 <div>
-                    <WeatherForm weatherDataHandler={this.handleRequestWeatherData} locationHandler = {this.handleLocationChange}/>
+                    <WeatherForm weatherDataHandler={this.handleRequestWeatherData} locationHandler={this.handleLocationChange}/>
                     <WeatherData data={this.state.location_weather_data}/>
                 </div>
             );
