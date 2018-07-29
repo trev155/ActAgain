@@ -10,7 +10,7 @@ export class WeatherApp extends React.Component {
             location_selection: "toronto",
             location_weather_data: null
         };
-        this.handleClick = this.handleClick.bind(this);
+        this.handleRequestWeatherData = this.handleRequestWeatherData.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
     }
 
@@ -20,7 +20,7 @@ export class WeatherApp extends React.Component {
     It will send a GET request to the current location saved in this.state.location,
     and save the fields of interest in the response into this.state.location_weather_data.
     */
-    handleClick(e) {
+    handleRequestWeatherData(e) {
         // Prepare a weather request for the current value of location_selection
         let location = this.state.location_selection;
         let yql = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + location + "') and u='c'";
@@ -67,14 +67,14 @@ export class WeatherApp extends React.Component {
             console.log("First pass");
             return (
                 <div>
-                    <WeatherForm clickHandler={this.handleClick}/>
+                    <WeatherForm weatherDataHandler={this.handleRequestWeatherData}/>
                 </div>
             );
         } else {
             console.log("Rerendered app");
             return (
                 <div>
-                    <WeatherForm clickHandler={this.handleClick} locationHandler = {this.handleLocationChange}/>
+                    <WeatherForm weatherDataHandler={this.handleRequestWeatherData} locationHandler = {this.handleLocationChange}/>
                     <WeatherData data={this.state.location_weather_data}/>
                 </div>
             );
