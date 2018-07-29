@@ -16,7 +16,9 @@ export class App extends React.Component {
 
 	render() {
 	    const weatherAppStyle = {
-	        "height": "1200px",
+	        "height": "800px",
+	        "border": "1px solid black",
+	        "padding": 5,
 	        "overflow": "scroll"
 	    };
 		return (

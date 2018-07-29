@@ -10,7 +10,7 @@ export class Header extends React.Component {
         };
         return (
         <div style={headerStyles}>
-            <h1>HELLO WORLD APP HEADER</h1>
+            <h1>Simple Weather App</h1>
         </div>
         );
     }

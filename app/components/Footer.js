@@ -10,7 +10,7 @@ export class Footer extends React.Component {
         };
         return (
         <div style={footerStyles}>
-            <h2>Footer hello world</h2>
+            <h2>A small footer</h2>
         </div>
         );
     }
