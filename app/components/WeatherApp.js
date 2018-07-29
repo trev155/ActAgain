@@ -11,6 +11,7 @@ export class WeatherApp extends React.Component {
             location_weather_data: null
         };
         this.handleClick = this.handleClick.bind(this);
+        this.handleLocationChange = this.handleLocationChange.bind(this);
     }
 
     /*
@@ -51,6 +52,15 @@ export class WeatherApp extends React.Component {
             });
     }
 
+    /*
+    This is an event handler that changes the current location state to the new value
+    specified by e.target.value.
+    */
+    handleLocationChange(e) {
+        const new_location = e.target.value;
+        this.setState({location_selection: new_location});
+    }
+
     render() {
         // When the page first loads, this.state.location_weather_data == null, so we have no data to display yet
         if (this.state.location_weather_data == null) {
@@ -64,7 +74,7 @@ export class WeatherApp extends React.Component {
             console.log("Rerendered app");
             return (
                 <div>
-                    <WeatherForm clickHandler={this.handleClick}/>
+                    <WeatherForm clickHandler={this.handleClick} locationHandler = {this.handleLocationChange}/>
                     <WeatherData data={this.state.location_weather_data}/>
                 </div>
             );

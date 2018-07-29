@@ -1,14 +1,17 @@
 import React from 'react';
-import { WeatherInput } from './WeatherInput';
-
 
 export class WeatherForm extends React.Component {
     render() {
         return (
         <div>
             <h2>Weather Form</h2>
-            <WeatherInput/>
-            <button onClick={this.props.clickHandler}>Click Me</button>
+
+            <select onChange={this.props.locationHandler}>
+                <option value="Toronto">Toronto</option>
+                <option value="Vancouver">Vancouver</option>
+            </select>
+
+            <button onClick={this.props.clickHandler}>Get Weather Data</button>
         </div>
         );
     }
