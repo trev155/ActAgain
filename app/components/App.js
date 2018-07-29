@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Header } from './Header';
-import { WeatherForm } from './WeatherForm';
+import { WeatherApp } from './WeatherApp';
+import { Footer } from './Footer';
 
 
 export class App extends React.Component {
 	render() {
 		return (
-		    <div>
+		    <div id="app">
 		        <Header/>
-		        <WeatherForm/>
+		        <WeatherApp/>
+		        <Footer/>
 		    </div>
 		);
 	}
