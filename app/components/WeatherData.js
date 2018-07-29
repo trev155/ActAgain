@@ -9,7 +9,7 @@ export class WeatherData extends React.Component {
         let forecasts = this.props.data.forecast;
         let forecast_data = forecasts.map(function(forecast, i) {
             return (
-                <div class="forecast-block" key={i}>
+                <div className="forecast-block" key={i}>
                     <p>Date: {forecast.date}</p>
                     <p>Day: {forecast.day}</p>
                     <p>High: {forecast.high}</p>
@@ -20,7 +20,7 @@ export class WeatherData extends React.Component {
         });
 
         return (
-            <div id="weather_data">
+            <div className="WeatherData">
                 <p>Sunrise: {this.props.data.sunrise}</p>
                 <p>Sunset: {this.props.data.sunset}</p>
                 <p>Humidity: {this.props.data.humidity}</p>
@@ -28,7 +28,7 @@ export class WeatherData extends React.Component {
                 <p>Current Temperature: {this.props.data.current_condition.temp}</p>
                 <p>{this.props.data.current_condition.text}</p>
 
-                <div id="forecasts">
+                <div className="forecasts">
                     <h3>10 Day Forecast</h3>
                     <ul>
                         {forecast_data}

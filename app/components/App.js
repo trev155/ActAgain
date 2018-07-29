@@ -6,25 +6,11 @@ import { Footer } from './Footer';
 
 
 export class App extends React.Component {
-    /*
-    React can't seem to access the <body>, I style it here.
-    */
-    componentDidMount() {
-        document.body.style.backgroundColor = "#D8CEF6";
-        document.body.style.margin = "0px";
-    }
-
 	render() {
-	    const weatherAppStyle = {
-	        "height": "800px",
-	        "border": "1px solid black",
-	        "padding": 5,
-	        "overflow": "scroll"
-	    };
 		return (
-		    <div>
+		    <div className="App">
 		        <Header/>
-		        <div style={weatherAppStyle}>
+		        <div className="WeatherApp">
 		            <WeatherApp/>
 		        </div>
 		        <Footer/>
