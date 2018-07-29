@@ -21,5 +21,6 @@ module.exports = {
 		path: __dirname + '/build'
 	},
 	
-	plugins: [HTMLWebpackPluginConfig]
+	plugins: [HTMLWebpackPluginConfig],
+	mode: "none"
 }
