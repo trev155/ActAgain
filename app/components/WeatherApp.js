@@ -4,6 +4,9 @@ import { WeatherForm } from './WeatherForm';
 import { WeatherData } from './WeatherData';
 
 export class WeatherApp extends React.Component {
+    /*
+    Initialize state defaults and create event handler bindings.
+    */
     constructor(props) {
         super(props);
         this.state = {

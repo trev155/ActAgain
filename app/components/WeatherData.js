@@ -10,10 +10,9 @@ export class WeatherData extends React.Component {
         let forecast_data = forecasts.map(function(forecast, i) {
             return (
                 <div className="forecastBlock" key={i}>
-                    <p>{forecast.date}</p>
-                    <p>Day: {forecast.day}</p>
-                    <p>Low: {forecast.low}</p>
-                    <p>High: {forecast.high}</p>
+                    <p className="stretch">{forecast.day} {forecast.date}</p>
+                    <img src="/app/images/placeholder.png" width="50" height="50"/>
+                    <p className="stretch">{forecast.low}&deg;C - {forecast.high}&deg;C</p>
                     <p>{forecast.text}</p>
                 </div>
             );
@@ -22,7 +21,9 @@ export class WeatherData extends React.Component {
         return (
             <div className="WeatherData">
                 <div className="CurrentWeather">
-                    <p className="subheader">Current Conditions for: {this.props.data.location.city}, {this.props.data.location.region}, {this.props.data.location.country}</p>
+                    <h3 className="subheader">Current Conditions for: {this.props.data.location.city}, {this.props.data.location.region}, {this.props.data.location.country}</h3>
+                    <p className="dateDescriptor">Data retrieved at: (placeholder)</p>
+
                     <div className="blockSection">
                         <p>Sunrise</p>
                         <img src="/app/images/sunrise.png" width="50" height="50"/>
@@ -45,12 +46,13 @@ export class WeatherData extends React.Component {
                     </div>
                     <div className="blockSection">
                         <p>Conditions</p>
+                        <img src="/app/images/placeholder.png" width="50" height="50"/>
                         <p>{this.props.data.current_condition.text}</p>
                     </div>
                 </div>
 
                 <div className="forecasts">
-                    <h3>10 Day Forecast</h3>
+                    <h3 className="subheader">10 Day Forecast</h3>
                     {forecast_data}
                 </div>
             </div>

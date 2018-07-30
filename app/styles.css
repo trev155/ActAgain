@@ -1,7 +1,7 @@
 /* Outside the App */
 body {
     margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
 
     background: url(/app/images/clearsky.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -28,7 +28,15 @@ body {
 }
 
 .header {
+    margin-top: 32px;
+}
+
+.header h1 {
+    margin: 0 auto;
+    width: 600px;
     text-align: center;
+    color: rgba(100, 45, 239, 0.9);
+    font-family: Arial;
 }
 
 .footer {
@@ -39,20 +47,32 @@ body {
     padding: 10px;
 }
 
+/* Form Section */
+.WeatherForm .instructions {
+    text-align: center;
+    font-size: 24px;
+    color: rgba(230, 244, 229, 0.8);
+    background-color: rgba(10, 10, 10, 0.05);
+}
+
+.WeatherForm div {
+    display: inline-block;
+    width: 40%;
+    margin-left: 4%;
+    margin-right: 4%;
+    text-align: center;
+}
+
 .WeatherForm select {
-    display: block;
-
-
-    background-color: #F6CEEC;
+    width: 60%;
+    background-color: rgba(102, 205, 170, 0.5);
+    border-radius: 20px;
     font-size: 20px;
-
 }
 
 .WeatherForm button {
-    display: block;
-    margin-top: 10px;
-
-    background-color: #FA5858;
+    width: 60%;
+    background-color: rgba(102, 205, 170, 0.5);
     border-radius: 20px;
     font-size: 20px;
 }
@@ -66,9 +86,22 @@ body {
     margin: 0;
 }
 
-.WeatherData .subheader {
-    font-size: 24px;
+.WeatherData .CurrentWeather .subheader {
+    margin-top: 30px;
+    margin-bottom: 0px;
     text-align: center;
+    font-size: 22px;
+    color: rgba(250, 240, 229, 0.8);
+    background-color: rgba(10, 10, 10, 0.05);
+}
+
+.WeatherData .CurrentWeather .dateDescriptor {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(10, 140, 200, 0.8);
+    background-color: rgba(10, 10, 10, 0.05);
 }
 
 .WeatherData .blockSection {
@@ -79,7 +112,7 @@ body {
     height: 150px;
     margin: 2%;
 
-    font-size: 16px;
+    font-size: 14px;
     background-color: rgba(66, 240, 215, 0.6);
     border-radius: 15px;
     opacity: 0.8;
@@ -100,7 +133,7 @@ body {
     vertical-align: middle;
     text-align: center;
     width: 20%;
-    height: 150px;
+    height: 200px;
     margin: 2%;
 
     font-size: 16px;
@@ -111,4 +144,10 @@ body {
 
 .WeatherData .forecastBlock:hover {
     opacity: 1.0;
+}
+
+.WeatherData .forecastBlock p.stretch {
+    height: 40px;
+    padding-top: 10px;
+    vertical-align: middle;
 }

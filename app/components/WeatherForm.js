@@ -9,13 +9,16 @@ export class WeatherForm extends React.Component {
 
         return (
         <div className="WeatherForm">
-            <h2>Select the city that you want to retrieve data from below:</h2>
+            <h2 className="instructions">Select the city that you want to retrieve data from below:</h2>
 
-            <select onChange={this.props.locationHandler}>
-                {location_names_options}
-            </select>
-
-            <button onClick={this.props.weatherDataHandler}>Get Weather Data</button>
+            <div className="dropdownContainer">
+                <select onChange={this.props.locationHandler}>
+                    {location_names_options}
+                </select>
+            </div>
+            <div className="buttonContainer">
+                <button onClick={this.props.weatherDataHandler}>Get Weather Data</button>
+            </div>
         </div>
         );
     }
