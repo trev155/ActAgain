@@ -86,34 +86,12 @@ body {
     margin: 0;
 }
 
-.WeatherData .CurrentWeather .subheader {
-    margin-top: 30px;
-    margin-bottom: 0px;
-    text-align: center;
-    font-size: 22px;
-    color: rgba(250, 240, 229, 0.8);
-    background-color: rgba(10, 10, 10, 0.05);
-}
-
-.WeatherData .CurrentWeather .dateDescriptor {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    text-align: center;
-    font-size: 16px;
-    color: rgba(10, 140, 200, 0.8);
-    background-color: rgba(10, 10, 10, 0.05);
-}
-
 .WeatherData .blockSection {
     display: inline-block;
     vertical-align: middle;
     text-align: center;
     width: 20%;
-    height: 150px;
     margin: 2%;
-
-    font-size: 14px;
-    background-color: rgba(66, 240, 215, 0.6);
     border-radius: 15px;
     opacity: 0.8;
 }
@@ -122,32 +100,69 @@ body {
     opacity: 1.0;
 }
 
-.WeatherData .blockSection p {
+.WeatherData .currentWeather .subheader {
+    margin-top: 30px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 22px;
+    color: rgba(250, 240, 229, 0.8);
+    background-color: rgba(10, 10, 10, 0.05);
+}
+
+.WeatherData .currentWeather .dateDescriptor {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(10, 140, 200, 0.8);
+    background-color: rgba(10, 10, 10, 0.05);
+}
+
+.WeatherData .currentWeather .blockSection {
+    height: 150px;
+    font-size: 14px;
+    background-color: rgba(66, 240, 215, 0.6);
+}
+
+.WeatherData .currentWeather .blockSection .itemName {
     height: 35px;
     padding-top: 15px;
-    vertical-align: middle;
+    font-weight: bold;
 }
 
-.WeatherData .forecastBlock {
-    display: inline-block;
-    vertical-align: middle;
+.WeatherData .currentWeather .blockSection .itemValue {
+    height: 35px;
+    padding-top: 15px;
+    color: rgb(15, 30, 129);
+}
+
+.WeatherData .forecasts .subheader {
     text-align: center;
-    width: 20%;
-    height: 200px;
-    margin: 2%;
+    font-size: 22px;
+    color: rgba(250, 240, 229, 0.8);
+    background-color: rgba(10, 10, 10, 0.05);
+}
 
-    font-size: 16px;
+.WeatherData .forecasts .blockSection {
+    height: 150px;
+    font-size: 14px;
     background-color: rgba(195, 250, 185, 0.6);
-    border-radius: 15px;
-    opacity: 0.8;
 }
 
-.WeatherData .forecastBlock:hover {
-    opacity: 1.0;
+.WeatherData .forecasts .blockSection .day {
+    height: 30px;
+    font-weight: bold;
 }
 
-.WeatherData .forecastBlock p.stretch {
+.WeatherData .forecasts .blockSection .highlow {
+    height: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.WeatherData .forecasts .blockSection .description {
     height: 40px;
-    padding-top: 10px;
-    vertical-align: middle;
+    font-weight: bold;
+    color: rgba(10, 33, 167, 1);
 }
