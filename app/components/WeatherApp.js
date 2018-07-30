@@ -40,9 +40,11 @@ export class WeatherApp extends React.Component {
                 let weather_data = {
                     sunrise: all_data.astronomy.sunrise,
                     sunset: all_data.astronomy.sunset,
-                    humidity: all_data.atmosphere.humidity,
+                    humidity: all_data.atmosphere.humidity + "%",
                     current_condition: all_data.item.condition,
-                    forecast: all_data.item.forecast
+                    forecast: all_data.item.forecast,
+                    location: all_data.location
+
                 }
                 self.setState({location_weather_data: weather_data});
             }).catch(function (error) {
