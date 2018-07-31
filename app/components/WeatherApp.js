@@ -62,6 +62,7 @@ export class WeatherApp extends React.Component {
                     date_retrieved: all_data.item.condition.date,
                     current_temperature: all_data.item.condition.temp,
                     current_description: all_data.item.condition.text,
+                    current_condition_code: all_data.item.condition.code,
                     humidity: all_data.atmosphere.humidity + "%",
                     visibility: all_data.atmosphere.visibility + " km",
                     pressure: all_data.atmosphere.pressure + " mb",

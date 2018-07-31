@@ -1,4 +1,5 @@
 import React from 'react';
+import { ConditionImage } from './ConditionImage';
 
 export class WeatherData extends React.Component {
     render() {
@@ -11,7 +12,7 @@ export class WeatherData extends React.Component {
             return (
                 <div className="blockSection" key={i}>
                     <p className="day">{forecast.day} {forecast.date}</p>
-                    <img src="/app/images/placeholder.png" width="50" height="50"/>
+                    <ConditionImage conditionCode={forecast.code} width="50" height="50"/>
                     <p className="highlow">{forecast.low}&deg;C - {forecast.high}&deg;C</p>
                     <p className="description">{forecast.text}</p>
                 </div>
@@ -31,7 +32,7 @@ export class WeatherData extends React.Component {
                     </div>
                     <div className="blockSection">
                         <p className="itemName">Conditions</p>
-                        <img src="/app/images/placeholder.png" width="50" height="50"/>
+                        <ConditionImage conditionCode={this.props.data.current_condition_code} width="50" height="50"/>
                         <p className="itemValue">{this.props.data.current_description}</p>
                     </div>
                     <div className="blockSection">
