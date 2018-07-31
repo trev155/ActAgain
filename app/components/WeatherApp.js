@@ -10,11 +10,19 @@ export class WeatherApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            location_selection: "toronto",
+            location_selection: null,
             location_weather_data: null
         };
         this.handleRequestWeatherData = this.handleRequestWeatherData.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
+    }
+
+    /*
+    A method for retrieving the currently selected option.
+    */
+    getCurrentlySelectedOption() {
+        let selectElement = document.getElementById("locationSelector");
+        return selectElement.options[selectElement.selectedIndex].value;
     }
 
     /*
@@ -25,8 +33,8 @@ export class WeatherApp extends React.Component {
     */
     handleRequestWeatherData(e) {
         // Prepare a weather request for the current value of location_selection
-        let location = this.state.location_selection;
-        let yql = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + location + "') and u='c'";
+        let location_name = this.state.location_selection == null ? this.getCurrentlySelectedOption() : this.state.location_selection;
+        let yql = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + location_name + "') and u='c'";
         let url = "https://query.yahooapis.com/v1/public/yql?q=" + yql + "&format=json";
         url = encodeURI(url);
 
@@ -35,9 +43,9 @@ export class WeatherApp extends React.Component {
         axios.get(url)
             .then(function(response) {
                 // log the raw response for debugging
-                console.log("Raw response")
-                console.log(response);
-                console.log(response.data.query.results.channel);
+                // console.log("Raw response")
+                // console.log(response);
+                // console.log(response.data.query.results.channel);
 
                 let all_data = response.data.query.results.channel;
                 let weather_data = {
@@ -47,7 +55,6 @@ export class WeatherApp extends React.Component {
                     current_condition: all_data.item.condition,
                     forecast: all_data.item.forecast,
                     location: all_data.location
-
                 }
                 self.setState({location_weather_data: weather_data});
             }).catch(function (error) {
@@ -66,21 +73,25 @@ export class WeatherApp extends React.Component {
         this.setState({location_selection: new_location});
     }
 
+    /*
+    Render the WeatherApp. It consists of a form, the WeatherForm, and a data section, WeatherData.
+    If there is no data, only render the form.
+    */
     render() {
-        // When the page first loads, this.state.location_weather_data == null, so we have no data to display yet
-        if (this.state.location_weather_data == null) {
-            console.log("Rendered App (No weather data stored yet)");
+        const isFirstPageLoad = this.state.location_weather_data == null;
+        let weatherData = <WeatherData data={this.state.location_weather_data}/>;
+
+        if (isFirstPageLoad) {
             return (
                 <div className="WeatherApp">
                     <WeatherForm weatherDataHandler={this.handleRequestWeatherData} locationHandler={this.handleLocationChange}/>
                 </div>
             );
         } else {
-            console.log("Rendered App (with weather data)");
             return (
                 <div className="WeatherApp">
                     <WeatherForm weatherDataHandler={this.handleRequestWeatherData} locationHandler={this.handleLocationChange}/>
-                    <WeatherData data={this.state.location_weather_data}/>
+                    {weatherData}
                 </div>
             );
         }
