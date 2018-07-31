@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class WeatherForm extends React.Component {
     render() {
@@ -23,4 +24,9 @@ export class WeatherForm extends React.Component {
         </div>
         );
     }
+}
+
+WeatherForm.propTypes = {
+    locationHandler: PropTypes.func.isRequired,
+    weatherDataHandler: PropTypes.func.isRequired
 }

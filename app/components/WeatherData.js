@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ConditionImage } from './ConditionImage';
+import { WeatherBlockSection } from './WeatherBlockSection';
+import { ForecastBlockSection } from './ForecastBlockSection';
 
 export class WeatherData extends React.Component {
     render() {
@@ -10,12 +13,8 @@ export class WeatherData extends React.Component {
         let forecasts = this.props.data.forecast;
         let forecast_data = forecasts.map(function(forecast, i) {
             return (
-                <div className="blockSection" key={i}>
-                    <p className="day">{forecast.day} {forecast.date}</p>
-                    <ConditionImage conditionCode={forecast.code} width="50" height="50"/>
-                    <p className="highlow">{forecast.low}&deg;C - {forecast.high}&deg;C</p>
-                    <p className="description">{forecast.text}</p>
-                </div>
+                <ForecastBlockSection key={i} dateString={forecast.day + " " + forecast.date} conditionCode={forecast.code}
+                imgWidth="50" imgHeight="50" lowHighString={forecast.low + "\xB0C - " + forecast.high + "\xB0C"} descriptor={forecast.text}/>
             );
         });
 
@@ -24,52 +23,15 @@ export class WeatherData extends React.Component {
                 <div className="currentWeather">
                     <h3 className="subheader">Current Conditions for: {this.props.data.location.city}, {this.props.data.location.region}, {this.props.data.location.country}</h3>
                     <p className="dateDescriptor">Data retrieved at: {this.props.data.date_retrieved}</p>
-
-                    <div className="blockSection">
-                        <p className="itemName">Current Temperature</p>
-                        <img src="/app/images/temperature.png" width="50" height="50"/>
-                        <p className="itemValue">{this.props.data.current_temperature}&deg;C</p>
-                    </div>
-                    <div className="blockSection">
-                        <p className="itemName">Conditions</p>
-                        <ConditionImage conditionCode={this.props.data.current_condition_code} width="50" height="50"/>
-                        <p className="itemValue">{this.props.data.current_description}</p>
-                    </div>
-                    <div className="blockSection">
-                        <p className="itemName">Humidity</p>
-                        <img src="/app/images/humidity.png" width="50" height="50"/>
-                        <p className="itemValue">{this.props.data.humidity}</p>
-                    </div>
-                    <div className="blockSection">
-                        <p className="itemName">Visibility</p>
-                        <img src="/app/images/visibility.png" width="50" height="50"/>
-                        <p className="itemValue">{this.props.data.visibility}</p>
-                    </div>
-                    <div className="blockSection">
-                        <p className="itemName">Pressure</p>
-                        <img src="/app/images/pressure.png" width="50" height="50"/>
-                        <p className="itemValue">{this.props.data.pressure}</p>
-                    </div>
-                    <div className="blockSection">
-                        <p className="itemName">Sunrise</p>
-                        <img src="/app/images/sunrise.png" width="50" height="50"/>
-                        <p className="itemValue">{this.props.data.sunrise}</p>
-                    </div>
-                    <div className="blockSection">
-                        <p className="itemName">Sunset</p>
-                        <img src="/app/images/sunset.png" width="50" height="50"/>
-                        <p className="itemValue">{this.props.data.sunset}</p>
-                    </div>
-                    <div className="blockSection">
-                        <p className="itemName">Wind Direction</p>
-                        <img src="/app/images/winddirection.png" width="50" height="50"/>
-                        <p className="itemValue">{this.props.data.windDirection}&deg;C</p>
-                    </div>
-                    <div className="blockSection">
-                        <p className="itemName">Wind Speed</p>
-                        <img src="/app/images/windspeed.png" width="50" height="50"/>
-                        <p className="itemValue">{this.props.data.windSpeed}</p>
-                    </div>
+                    <WeatherBlockSection itemName="Current Temperature" itemImgPath="/app/images/temperature.png" itemImgWidth="50" itemImgHeight="50" itemValue={this.props.data.current_temperature + "\xB0C"}/>
+                    <WeatherBlockSection itemName="Conditions" itemImgPath={ConditionImage.codeConverter(this.props.data.current_condition_code)} itemImgWidth="50" itemImgHeight="50" itemValue={this.props.data.current_description}/>
+                    <WeatherBlockSection itemName="Humidity" itemImgPath="/app/images/humidity.png" itemImgWidth="50" itemImgHeight="50" itemValue={this.props.data.humidity}/>
+                    <WeatherBlockSection itemName="Visibility" itemImgPath="/app/images/visibility.png" itemImgWidth="50" itemImgHeight="50" itemValue={this.props.data.visibility}/>
+                    <WeatherBlockSection itemName="Pressure" itemImgPath="/app/images/pressure.png" itemImgWidth="50" itemImgHeight="50" itemValue={this.props.data.pressure}/>
+                    <WeatherBlockSection itemName="Sunrise" itemImgPath="/app/images/sunrise.png" itemImgWidth="50" itemImgHeight="50" itemValue={this.props.data.sunrise}/>
+                    <WeatherBlockSection itemName="Sunset" itemImgPath="/app/images/sunset.png" itemImgWidth="50" itemImgHeight="50" itemValue={this.props.data.sunset}/>
+                    <WeatherBlockSection itemName="Wind Direction" itemImgPath="/app/images/winddirection.png" itemImgWidth="50" itemImgHeight="50" itemValue={this.props.data.windDirection + "\xB0C"}/>
+                    <WeatherBlockSection itemName="Wind Speed" itemImgPath="/app/images/windspeed.png" itemImgWidth="50" itemImgHeight="50" itemValue={this.props.data.windSpeed}/>
                 </div>
                 <div className="forecasts">
                     <h3 className="subheader">10 Day Forecast</h3>
@@ -78,4 +40,8 @@ export class WeatherData extends React.Component {
             </div>
         );
     }
+}
+
+WeatherData.propTypes = {
+    data: PropTypes.object.isRequired
 }

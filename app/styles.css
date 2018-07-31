@@ -102,7 +102,7 @@ body {
     width: 20%;
     margin: 2%;
     border-radius: 15px;
-    opacity: 0.8;
+    opacity: 0.75;
 }
 
 .WeatherData .blockSection:hover {
@@ -168,7 +168,7 @@ body {
     font-weight: bold;
 }
 
-.WeatherData .forecasts .blockSection .highlow {
+.WeatherData .forecasts .blockSection .lowhigh {
     height: 20px;
     margin-top: 10px;
     font-weight: bold;
@@ -188,5 +188,5 @@ body {
 
 .weatherData-appear.weatherData-appear-active {
   opacity: 1;
-  transition: opacity 2s ease-in;
+  transition: opacity 1s ease-in;
 }

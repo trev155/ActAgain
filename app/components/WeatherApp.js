@@ -95,7 +95,6 @@ export class WeatherApp extends React.Component {
     */
     render() {
         const isFirstPageLoad = this.state.location_weather_data == null;
-        let weatherData = <WeatherData data={this.state.location_weather_data}/>;
 
         if (isFirstPageLoad) {
             return (
@@ -110,10 +109,12 @@ export class WeatherApp extends React.Component {
                     <ReactCSSTransitionGroup
                         transitionName="weatherData"
                         transitionAppear={true}
-                        transitionAppearTimeout={2000}
+                        transitionAppearTimeout={1000}
                         transitionEnter={false}
                         transitionLeave={false}>
-                        {weatherData}
+                        <div>
+                            <WeatherData data={this.state.location_weather_data}/>;
+                        </div>
                     </ReactCSSTransitionGroup>
                 </div>
             );

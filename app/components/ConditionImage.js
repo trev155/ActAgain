@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class ConditionImage extends React.Component {
     /*
     Given a condition code (see: https://developer.yahoo.com/weather/archive.html#image), return the path
     to the corresponding image file that I want to use.
     */
-    codeConverter(code) {
+    static codeConverter(code) {
         const imgPrefix = "/app/images/";
         const mappings = {
             "0": "cc_tornado.png",
@@ -70,7 +71,13 @@ export class ConditionImage extends React.Component {
     }
 
     render() {
-        let imgPath = this.codeConverter(this.props.conditionCode);
+        let imgPath = ConditionImage.codeConverter(this.props.conditionCode);
         return <img src={imgPath} width={this.props.width} height={this.props.height}/>;
     }
+}
+
+ConditionImage.propTypes = {
+    conditionCode: PropTypes.string.isRequired,
+    width: PropTypes.string.isRequired,
+    height: PropTypes.string.isRequired
 }
