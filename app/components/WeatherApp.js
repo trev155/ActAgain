@@ -45,16 +45,22 @@ export class WeatherApp extends React.Component {
                 // log the raw response for debugging
                 // console.log("Raw response")
                 // console.log(response);
-                // console.log(response.data.query.results.channel);
+                console.log(response.data.query.results.channel);
 
                 let all_data = response.data.query.results.channel;
                 let weather_data = {
+                    location: all_data.location,
+                    date_retrieved: all_data.item.condition.date,
+                    current_temperature: all_data.item.condition.temp,
+                    current_description: all_data.item.condition.text,
+                    humidity: all_data.atmosphere.humidity + "%",
+                    visibility: all_data.atmosphere.visibility + " km",
+                    pressure: all_data.atmosphere.pressure + " mb",
                     sunrise: all_data.astronomy.sunrise,
                     sunset: all_data.astronomy.sunset,
-                    humidity: all_data.atmosphere.humidity + "%",
-                    current_condition: all_data.item.condition,
-                    forecast: all_data.item.forecast,
-                    location: all_data.location
+                    windDirection: all_data.wind.direction,
+                    windSpeed: all_data.wind.speed + " km/h",
+                    forecast: all_data.item.forecast
                 }
                 self.setState({location_weather_data: weather_data});
             }).catch(function (error) {
