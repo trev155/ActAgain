@@ -41,6 +41,13 @@ body {
 
 .footer {
     text-align: center;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    font-size: 12px;
+    background-color: rgba(10, 23, 52, 0.3);
 }
 
 .WeatherApp {
@@ -134,6 +141,10 @@ body {
     height: 35px;
     padding-top: 15px;
     color: rgb(15, 30, 129);
+}
+
+.WeatherData .forecasts {
+    padding-bottom: 30px;
 }
 
 .WeatherData .forecasts .subheader {
