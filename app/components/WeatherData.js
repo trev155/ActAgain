@@ -4,7 +4,7 @@ export class WeatherData extends React.Component {
     render() {
         // for debugging
         // console.log("Data sent into WeatherData component:");
-        console.log(this.props.data);
+        // console.log(this.props.data);
 
         let forecasts = this.props.data.forecast;
         let forecast_data = forecasts.map(function(forecast, i) {

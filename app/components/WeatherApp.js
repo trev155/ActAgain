@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { WeatherForm } from './WeatherForm';
 import { WeatherData } from './WeatherData';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export class WeatherApp extends React.Component {
     /*
@@ -32,6 +33,14 @@ export class WeatherApp extends React.Component {
     and save the fields of interest in the response into this.state.location_weather_data.
     */
     handleRequestWeatherData(e) {
+        /*
+        Due to the way React animations work, the "appear" effect only actiavtes when an element changes.
+        So in order to force a change and thus a re-rendering, clear the state.
+        NOTE: this might not be the best way to go about it, but I'm not sure how to do this otherwise.
+        */
+        let tempState = this.state;
+        this.setState({location_weather_data: null});
+
         // Prepare a weather request for the current value of location_selection
         let location_name = this.state.location_selection == null ? this.getCurrentlySelectedOption() : this.state.location_selection;
         let yql = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + location_name + "') and u='c'";
@@ -45,7 +54,7 @@ export class WeatherApp extends React.Component {
                 // log the raw response for debugging
                 // console.log("Raw response")
                 // console.log(response);
-                console.log(response.data.query.results.channel);
+                // console.log(response.data.query.results.channel);
 
                 let all_data = response.data.query.results.channel;
                 let weather_data = {
@@ -97,7 +106,14 @@ export class WeatherApp extends React.Component {
             return (
                 <div className="WeatherApp">
                     <WeatherForm weatherDataHandler={this.handleRequestWeatherData} locationHandler={this.handleLocationChange}/>
-                    {weatherData}
+                    <ReactCSSTransitionGroup
+                        transitionName="weatherData"
+                        transitionAppear={true}
+                        transitionAppearTimeout={2000}
+                        transitionEnter={false}
+                        transitionLeave={false}>
+                        {weatherData}
+                    </ReactCSSTransitionGroup>
                 </div>
             );
         }

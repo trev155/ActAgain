@@ -19,6 +19,8 @@ body {
 
 /* Inside the App */
 .App {
+    height: 1500px;
+
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -148,6 +150,7 @@ body {
 }
 
 .WeatherData .forecasts .subheader {
+    margin: 0px;
     text-align: center;
     font-size: 22px;
     color: rgba(250, 240, 229, 0.8);
@@ -176,4 +179,14 @@ body {
     height: 40px;
     font-weight: bold;
     color: rgba(10, 33, 167, 1);
+}
+
+/* React animations */
+.weatherData-appear {
+  opacity: 0.01;
+}
+
+.weatherData-appear.weatherData-appear-active {
+  opacity: 1;
+  transition: opacity 2s ease-in;
 }
