@@ -1,7 +1,13 @@
 # ActAgain
 Babby's first react project
 
-## Showcase
+## Images
+<img src="readme_images/app_01.png" width="300" height="400"/>
+<br/>
+<img src="readme_images/app_02.png" width="300" height="400"/>
+<br/>
+<img src="readme_images/app_03.png" width="300" height="400"/>
+<br/>
 
 ## Notes / Usage
 To start:
@@ -14,8 +20,5 @@ Reference:
 For instance, the visibility and pressure values seem to be odd.
 - images are mostly stock photos from online
 
-
 ## TODOs
-- refactor code - block sections as components
-- propTypes
-- documentation
+- documentation (from checkout)
